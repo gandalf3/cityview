@@ -8,3 +8,14 @@ L.tileLayer("http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png", { maxzoom : 18 }
 var outline = { "type":"Feature", "geometry": {"type":"Polygon","coordinates":[[[-123.100365600495,44.045516028131],[-123.100365600495,44.0587890681825],[-123.079038340709,44.0587890681825],[-123.079038340709,44.045516028131],[-123.100365600495,44.045516028131]]]}, "properties": { "label": "Eugene Downtown" }}
 
 L.geoJson(outline).addTo(map)
+
+
+// add neighborhoods
+var neighborStyle = {
+	"weight": 1,
+}
+
+var geojsonLayer = new L.GeoJSON.AJAX("data/neighborhoods_geo.json", {
+	style: neighborStyle
+});
+geojsonLayer.addTo(map);
