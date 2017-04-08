@@ -8,3 +8,10 @@ html, body {
 .navbar.navbar{
   margin-bottom:0;
 }
+#navLogo{
+  width:100%;
+}
+.navbar-header{
+  width:57.5px;
+  height:57.5px;
+}
