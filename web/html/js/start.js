@@ -6,32 +6,31 @@ var map = L.map('map').setView([44.0539, -123.0944], 12);
 L.tileLayer("http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png", { maxzoom : 18 }).addTo(map)
 
 
-function popUp(feature, layer, popup){
-	popup.setContent(feature.properties)
+// add neighborhoods
+function assignNeighborPopup(feature, layer){
+	var popup = L.popup({
+		"closeButton": false,
+		"className": "neighbor-popup",
+		"autoPan": false,
+	});
+	popup.setContent(feature.properties);
  	layer.bindPopup(popup);
 	
 	layer.addEventListener('mouseover', function (e) {
 	        this.openPopup();
      	});
-	
 
         layer.addEventListener('mouseout', function (e) {
-                this.closePopup()
+                this.closePopup();
 	});
 	
 }
-// add neighborhoods
-var neighborPopup = L.popup({
-	"closeButton": false,
-	"className": "neighbor-popup",
-	"autoPan": false,
-});
 var neighborStyle = {
 	"weight": 1,
 }
 
 var neighborPolys = new L.GeoJSON.AJAX("data/neighborhoods_geo.json",{
-	onEachFeature:function(f, l) {popUp(f, l, neighborPopup)},
+	onEachFeature:assignNeighborPopup,
 	style:neighborStyle,
 });
 
