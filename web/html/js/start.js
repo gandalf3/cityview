@@ -11,7 +11,12 @@ var neighborStyle = {
 	"weight": 1,
 }
 
-var geojsonLayer = new L.GeoJSON.AJAX("data/neighborhoods_geo.json", {
+var neighborPolys = new L.GeoJSON.AJAX("data/neighborhoods_geo.json", {
 	style: neighborStyle
 });
-geojsonLayer.addTo(map);
+
+var ugbPoly = new L.GeoJSON.AJAX("data/ugb_geo.json", {
+	style: neighborStyle
+});
+//ugbPoly.addTo(map);
+neighborPolys.addTo(map);
