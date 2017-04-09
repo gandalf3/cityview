@@ -13,7 +13,7 @@ function assignNeighborPopup(feature, layer){
 		"className": "neighbor-popup",
 		"autoPan": true,
 	});
-	popup.setContent(feature.properties);
+	popup.setContent(feature.properties.name);
  	layer.bindPopup(popup);
 	
 	layer.addEventListener('mouseover', function (e) {
