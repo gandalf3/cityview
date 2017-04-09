@@ -11,7 +11,7 @@ function assignNeighborPopup(feature, layer){
 	var popup = L.popup({
 		"closeButton": false,
 		"className": "neighbor-popup",
-		"autoPan": false,
+		"autoPan": true,
 	});
 	popup.setContent(feature.properties);
  	layer.bindPopup(popup);
