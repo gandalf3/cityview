@@ -6,6 +6,12 @@ var map = L.map('map').setView([44.0539, -123.0944], 12);
 L.tileLayer("http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png", { maxzoom : 18 }).addTo(map)
 
 
+var colors = {
+	"active":	'#ff5e00',
+	"unactive":	'#3388ff',
+}
+
+
 // add neighborhoods
 function assignNeighborPopup(feature, layer){
 	var popup = L.popup({
@@ -18,10 +24,12 @@ function assignNeighborPopup(feature, layer){
 	
 	layer.addEventListener('mouseover', function (e) {
 	        this.openPopup();
+		this.setStyle({color: colors['active']});
      	});
 
         layer.addEventListener('mouseout', function (e) {
                 this.closePopup();
+		this.setStyle({color: colors['unactive']});
 	});
 	
 }
