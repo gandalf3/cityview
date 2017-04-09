@@ -20,13 +20,14 @@ var colors = {
 
 // add neighborhoods
 var httpRequest = new XMLHttpRequest();
-httpRequest.onreadystatechange = function(){
-	if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200){
-		console.log('done');
+httpRequest.onload = function(e){
+
+	if (httpRequest.status === 200){
+		console.log(JSON.parse(httpRequest.response));
 	}
 }
-var permits = httpRequest.open("GET", D["permits"], true);
-		console.log(permits);
+httpRequest.open("GET", D["permits"], true);
+httpRequest.send();
 
 function assignNeighborhoodInfo(feature, layer){
 	//popup on hover
