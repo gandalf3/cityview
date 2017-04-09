@@ -5,6 +5,12 @@ var map = L.map('map').setView([44.0539, -123.0944], 12);
 // http://a.tile.stamen.com/toner/${z}/${x}/${y}.png
 L.tileLayer("http://a.tile.stamen.com/terrain/{z}/{x}/{y}.png", { maxzoom : 18 }).addTo(map)
 
+var droot = "data/";
+var D = {
+	"permits":	droot + "permits.json",
+	"neighbors":	droot + "neighborhoods_geo.json",
+}
+
 
 var colors = {
 	"active":	'#ff5e00',
@@ -13,7 +19,12 @@ var colors = {
 
 
 // add neighborhoods
-function assignNeighborPopup(feature, layer){
+var httpRequest = new xmlHttpRequest();
+var permits = httpRequest.open("GET", D["permits"], true);
+console.log(permits);
+
+function assignNeighborhoodInfo(feature, layer){
+	//popup on hover
 	var popup = L.popup({
 		"closeButton": false,
 		"className": "neighbor-popup",
@@ -38,7 +49,7 @@ var neighborStyle = {
 }
 
 var neighborPolys = new L.GeoJSON.AJAX("data/neighborhoods_geo.json",{
-	onEachFeature:assignNeighborPopup,
+	onEachFeature:assignNeighborhoodInfo,
 	style:neighborStyle,
 });
 
