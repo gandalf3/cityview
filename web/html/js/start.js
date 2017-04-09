@@ -13,9 +13,14 @@ var D = {
 
 
 // add neighborhoods
-var httpRequest = new xmlHttpRequest();
+var httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = function(){
+	if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200){
+		console.log('done');
+	}
+}
 var permits = httpRequest.open("GET", D["permits"], true);
-console.log(permits);
+		console.log(permits);
 
 function assignNeighborhoodInfo(feature, layer){
 	//popup on hover
