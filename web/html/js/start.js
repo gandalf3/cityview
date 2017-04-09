@@ -11,6 +11,11 @@ var D = {
 	"neighbors":	droot + "neighborhoods_geo.json",
 }
 
+var colors = {
+	"active":	'#ff5e00',
+	"unactive":	'#3388ff',
+}
+
 
 // add neighborhoods
 var httpRequest = new XMLHttpRequest();
@@ -35,10 +40,12 @@ function assignNeighborhoodInfo(feature, layer){
 	
 	layer.addEventListener('mouseover', function (e) {
 	        this.openPopup();
+		this.setStyle({color: colors['active']});
      	});
 
         layer.addEventListener('mouseout', function (e) {
                 this.closePopup();
+		this.setStyle({color: colors['unactive']});
 	});
 	
 }
