@@ -11,6 +11,11 @@ var D = {
 	"neighbors":	droot + "neighborhoods_geo.json",
 }
 
+var colors = {
+	"active":	'#ff5e00',
+	"unactive":	'#3388ff',
+}
+
 
 var colors = {
 	"active":	'#ff5e00',
